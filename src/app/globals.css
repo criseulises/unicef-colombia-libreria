@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-unicef: #2596be;
+  --color-unicef-dark: #1a7a9e;
+  --color-unicef-light: #e8f6fb;
+  --color-unicef-sky: #b3e5fc;
+  --color-accent-yellow: #ffc107;
+  --color-accent-coral: #ff6b6b;
+  --color-accent-mint: #51cf66;
+  --color-accent-purple: #9775fa;
+  --color-accent-pink: #f06595;
+  --color-accent-orange: #ff922b;
+  --font-heading: 'Baloo 2', 'Comic Neue', cursive, sans-serif;
+  --font-body: 'Nunito', 'Comic Neue', sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #fefefe;
+    color: #333;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out forwards;
+}
+
+.decoration-dots {
+  background-image: radial-gradient(circle, #2596be20 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.book-shadow {
+  box-shadow: 0 10px 30px rgba(37, 150, 190, 0.15), 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.book-shadow:hover {
+  box-shadow: 0 15px 40px rgba(37, 150, 190, 0.25), 0 8px 16px rgba(0,0,0,0.12);
+}
