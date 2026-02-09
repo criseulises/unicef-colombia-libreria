@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, Download, Sparkles, User, Users } from 'lucide-react';
+import { BookOpen, Download, Sparkles, User, Users, GraduationCap, School, CircleUser, UserRound, Rainbow, ShieldQuestion } from 'lucide-react';
 import Modal from './Modal';
 import { Book, SurveyResponse } from '@/types';
 
@@ -58,16 +58,16 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
   };
 
   const roleOptions = [
-    { value: 'estudiante' as const, label: 'Estudiante', icon: '🎒', color: 'bg-blue-50 border-blue-200 text-blue-700 peer-checked:bg-blue-100 peer-checked:border-unicef' },
-    { value: 'docente' as const, label: 'Docente', icon: '👩‍🏫', color: 'bg-green-50 border-green-200 text-green-700 peer-checked:bg-green-100 peer-checked:border-accent-mint' },
-    { value: 'otro' as const, label: 'Otro', icon: '👤', color: 'bg-purple-50 border-purple-200 text-purple-700 peer-checked:bg-purple-100 peer-checked:border-accent-purple' },
+    { value: 'estudiante' as const, label: 'Estudiante', icon: GraduationCap, iconColor: 'text-blue-600' },
+    { value: 'docente' as const, label: 'Docente', icon: School, iconColor: 'text-green-600' },
+    { value: 'otro' as const, label: 'Otro', icon: CircleUser, iconColor: 'text-purple-600' },
   ];
 
   const genderOptions = [
-    { value: 'femenino' as const, label: 'Femenino', icon: '👧' },
-    { value: 'masculino' as const, label: 'Masculino', icon: '👦' },
-    { value: 'otro' as const, label: 'Otro', icon: '🌈' },
-    { value: 'prefiero_no_decir' as const, label: 'Prefiero no decir', icon: '🤐' },
+    { value: 'femenino' as const, label: 'Femenino', icon: UserRound, iconColor: 'text-pink-500' },
+    { value: 'masculino' as const, label: 'Masculino', icon: User, iconColor: 'text-blue-500' },
+    { value: 'otro' as const, label: 'Otro', icon: Rainbow, iconColor: 'text-purple-500' },
+    { value: 'prefiero_no_decir' as const, label: 'Prefiero no decir', icon: ShieldQuestion, iconColor: 'text-gray-500' },
   ];
 
   return (
@@ -111,7 +111,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
                     ? 'border-unicef bg-unicef-light shadow-md scale-105'
                     : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                 }`}>
-                  <span className="text-2xl">{option.icon}</span>
+                  <option.icon size={24} className={option.iconColor} />
                   <span className="text-xs font-bold">{option.label}</span>
                 </div>
               </label>
@@ -141,7 +141,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
                     ? 'border-unicef bg-unicef-light shadow-md scale-105'
                     : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                 }`}>
-                  <span className="text-lg">{option.icon}</span>
+                  <option.icon size={18} className={option.iconColor} />
                   <span className="text-xs font-bold">{option.label}</span>
                 </div>
               </label>

@@ -13,6 +13,8 @@ import {
   FileText,
   Globe,
   Tag,
+  Smartphone,
+  Monitor,
 } from 'lucide-react';
 import { Book } from '@/types';
 import { ROUTES } from '@/lib/constants';
@@ -170,10 +172,10 @@ export default function BookDetailClient({ book }: Props) {
                 </p>
                 <div className="flex gap-3 mt-4">
                   <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-full border border-gray-200">
-                    🤖 Android
+                    <Smartphone size={14} /> Android
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-full border border-gray-200">
-                    💻 Windows
+                    <Monitor size={14} /> Windows
                   </span>
                 </div>
               </div>
