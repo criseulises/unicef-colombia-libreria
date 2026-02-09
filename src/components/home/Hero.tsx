@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div className="animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-unicef/10 text-unicef px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <div className="inline-flex items-center gap-2 bg-unicef/10 text-unicef px-4 py-2 rounded-lg text-sm font-bold mb-6">
               <Sparkles size={16} />
               UNICEF Colombia
             </div>
@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
                 href={ROUTES.LIBRARY}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-unicef text-white rounded-2xl font-bold text-lg hover:bg-unicef-dark transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl group"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-unicef text-white rounded-lg font-bold text-lg hover:bg-unicef-dark transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl group"
               >
                 <BookOpen size={22} />
                 Explorar biblioteca
@@ -74,7 +74,7 @@ export default function Hero() {
           <div className="relative flex justify-center items-center min-h-[400px] animate-scale-in">
             <div className="relative w-[280px] h-[370px] sm:w-[320px] sm:h-[420px]">
               {/* Book 3 (back) */}
-              <div className="absolute left-0 top-4 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-2xl overflow-hidden shadow-xl rotate-[-8deg] hover:rotate-[-4deg] transition-transform duration-500 cursor-pointer">
+              <div className="absolute left-0 top-4 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[-8deg] hover:rotate-[-4deg] transition-transform duration-500 cursor-pointer">
                 <Image
                   src="/images/covers/helena-y-una-carta-para-su-papa.webp"
                   alt="Helena y una carta para su papá"
@@ -85,7 +85,7 @@ export default function Hero() {
               </div>
 
               {/* Book 2 (middle) */}
-              <div className="absolute right-0 top-0 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-2xl overflow-hidden shadow-xl rotate-[6deg] hover:rotate-[3deg] transition-transform duration-500 cursor-pointer z-10">
+              <div className="absolute right-0 top-0 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[6deg] hover:rotate-[3deg] transition-transform duration-500 cursor-pointer z-10">
                 <Image
                   src="/images/covers/una-chalupa-para-juan.webp"
                   alt="Una chalupa para Juan"
@@ -96,7 +96,7 @@ export default function Hero() {
               </div>
 
               {/* Book 1 (front) */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-8 w-[200px] sm:w-[230px] h-[280px] sm:h-[310px] rounded-2xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer z-20">
+              <div className="absolute left-1/2 -translate-x-1/2 top-8 w-[200px] sm:w-[230px] h-[280px] sm:h-[310px] rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer z-20">
                 <Image
                   src="/images/covers/momo.webp"
                   alt="Momo"

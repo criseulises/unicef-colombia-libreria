@@ -25,7 +25,7 @@ export default function BookCard({ book, index = 0 }: BookCardProps) {
       href={ROUTES.BOOK_DETAIL(book.slug)}
       className="group block"
     >
-      <div className="relative bg-white rounded-3xl overflow-hidden book-shadow transition-all duration-300 hover:-translate-y-2">
+      <div className="relative bg-white rounded-xl overflow-hidden book-shadow transition-all duration-300 hover:-translate-y-2">
         {/* Color accent top */}
         <div className={`h-2 bg-gradient-to-r ${accent}`} />
 
@@ -40,7 +40,7 @@ export default function BookCard({ book, index = 0 }: BookCardProps) {
           />
           {/* Hover overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-            <span className="flex items-center gap-2 text-white font-bold text-sm bg-unicef/90 px-4 py-2 rounded-full">
+            <span className="flex items-center gap-2 text-white font-bold text-sm bg-unicef/90 px-4 py-2 rounded-lg">
               <BookOpen size={16} />
               Ver detalles
             </span>
@@ -65,7 +65,7 @@ export default function BookCard({ book, index = 0 }: BookCardProps) {
               <Clock size={12} />
               {book.pages} págs.
             </span>
-            <span className="text-xs bg-unicef-light text-unicef px-2.5 py-0.5 rounded-full font-bold">
+            <span className="text-xs bg-unicef-light text-unicef px-2.5 py-0.5 rounded-md font-bold">
               {book.ageRange}
             </span>
           </div>

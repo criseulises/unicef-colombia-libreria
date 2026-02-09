@@ -45,7 +45,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-accent-coral/15 text-red-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 bg-accent-coral/15 text-red-600 px-4 py-2 rounded-lg text-sm font-bold mb-4">
             <Heart size={16} />
             Sobre el proyecto
           </div>
@@ -64,9 +64,9 @@ export default function About() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group bg-white rounded-2xl p-6 border border-gray-100 hover:border-unicef/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group bg-white rounded-lg p-6 border border-gray-100 hover:border-unicef/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${feature.color} mb-4 group-hover:scale-110 transition-transform`}>
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${feature.color} mb-4 group-hover:scale-110 transition-transform`}>
                 <feature.icon size={22} />
               </div>
               <h3 className="font-heading text-lg font-bold text-gray-800 mb-2">

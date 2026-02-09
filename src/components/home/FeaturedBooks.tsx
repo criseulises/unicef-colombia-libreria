@@ -22,7 +22,7 @@ export default function FeaturedBooks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 bg-accent-yellow/15 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 bg-accent-yellow/15 text-amber-700 px-4 py-2 rounded-lg text-sm font-bold mb-4">
             <Library size={16} />
             Nuestra colección
           </div>
@@ -54,7 +54,7 @@ export default function FeaturedBooks() {
         <div className="text-center mt-12">
           <Link
             href={ROUTES.LIBRARY}
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-unicef text-unicef rounded-2xl font-bold hover:bg-unicef hover:text-white transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-unicef text-unicef rounded-lg font-bold hover:bg-unicef hover:text-white transition-all duration-300 group"
           >
             Ver toda la biblioteca
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

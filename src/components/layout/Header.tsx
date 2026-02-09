@@ -36,7 +36,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all duration-200"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all duration-200"
               >
                 <item.icon size={18} />
                 {item.label}
@@ -44,7 +44,7 @@ export default function Header() {
             ))}
             <Link
               href={ROUTES.LIBRARY}
-              className="ml-2 flex items-center gap-2 px-5 py-2.5 bg-unicef text-white rounded-full font-bold hover:bg-unicef-dark transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
+              className="ml-2 flex items-center gap-2 px-5 py-2.5 bg-unicef text-white rounded-lg font-bold hover:bg-unicef-dark transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
             >
               <BookOpen size={18} />
               Explorar Libros
@@ -70,7 +70,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all"
                 >
                   <item.icon size={20} />
                   {item.label}
@@ -79,7 +79,7 @@ export default function Header() {
               <Link
                 href={ROUTES.LIBRARY}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 mx-2 mt-2 px-5 py-3 bg-unicef text-white rounded-xl font-bold hover:bg-unicef-dark transition-all shadow-md"
+                className="flex items-center justify-center gap-2 mx-2 mt-2 px-5 py-3 bg-unicef text-white rounded-lg font-bold hover:bg-unicef-dark transition-all shadow-md"
               >
                 <BookOpen size={18} />
                 Explorar Libros

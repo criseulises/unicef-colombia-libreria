@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Library, Search, BookOpen } from 'lucide-react';
+import { Library, Search, BookOpen, BookX } from 'lucide-react';
 import { Book } from '@/types';
 import BookCard from '@/components/ui/BookCard';
 
@@ -24,7 +24,7 @@ export default function BibliotecaClient({ books }: Props) {
       {/* Header */}
       <div className="bg-gradient-to-br from-unicef-light via-blue-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-unicef/10 text-unicef px-4 py-2 rounded-full text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 bg-unicef/10 text-unicef px-4 py-2 rounded-lg text-sm font-bold mb-4">
             <Library size={16} />
             Biblioteca
           </div>
@@ -45,7 +45,7 @@ export default function BibliotecaClient({ books }: Props) {
               placeholder="Buscar por título, autor o categoría..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-11 pr-4 py-3.5 rounded-2xl border-2 border-gray-200 focus:border-unicef focus:ring-0 focus:outline-none bg-white text-sm font-medium placeholder:text-gray-400 transition-colors"
+              className="w-full pl-11 pr-4 py-3.5 rounded-lg border-2 border-gray-200 focus:border-unicef focus:ring-0 focus:outline-none bg-white text-sm font-medium placeholder:text-gray-400 transition-colors"
             />
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function BibliotecaClient({ books }: Props) {
           </>
         ) : (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">📚</div>
+            <BookX size={56} className="mx-auto mb-4 text-gray-300" />
             <h3 className="font-heading text-xl font-bold text-gray-600">
               No se encontraron libros
             </h3>

@@ -70,7 +70,7 @@ export default function BookDetailClient({ book }: Props) {
             {/* Cover */}
             <div className="lg:col-span-2">
               <div className="sticky top-28">
-                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden book-shadow max-w-sm mx-auto lg:max-w-none">
+                <div className="relative aspect-[3/4] rounded-xl overflow-hidden book-shadow max-w-sm mx-auto lg:max-w-none">
                   <Image
                     src={book.coverImage}
                     alt={book.title}
@@ -85,14 +85,14 @@ export default function BookDetailClient({ book }: Props) {
                 <div className="flex gap-3 mt-6">
                   <button
                     onClick={() => handleAction('leer')}
-                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-unicef text-white rounded-2xl font-bold text-base hover:bg-unicef-dark transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-unicef text-white rounded-lg font-bold text-base hover:bg-unicef-dark transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
                   >
                     <BookOpen size={20} />
                     Leer
                   </button>
                   <button
                     onClick={() => handleAction('descargar')}
-                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-accent-mint text-white rounded-2xl font-bold text-base hover:bg-green-500 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-accent-mint text-white rounded-lg font-bold text-base hover:bg-green-500 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
                   >
                     <Download size={20} />
                     Descargar
@@ -112,12 +112,12 @@ export default function BookDetailClient({ book }: Props) {
                 {book.categories.map((category) => (
                   <span
                     key={category}
-                    className={`text-xs font-bold px-3 py-1 rounded-full ${accent.bg} ${accent.text}`}
+                    className={`text-xs font-bold px-3 py-1 rounded-md ${accent.bg} ${accent.text}`}
                   >
                     {category}
                   </span>
                 ))}
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-unicef-light text-unicef">
+                <span className="text-xs font-bold px-3 py-1 rounded-md bg-unicef-light text-unicef">
                   {book.ageRange}
                 </span>
               </div>
@@ -146,7 +146,7 @@ export default function BookDetailClient({ book }: Props) {
                 {details.map((detail) => (
                   <div
                     key={detail.label}
-                    className="bg-gray-50 rounded-2xl p-4 border border-gray-100"
+                    className="bg-gray-50 rounded-lg p-4 border border-gray-100"
                   >
                     <div className="flex items-center gap-2 text-gray-400 mb-1">
                       <detail.icon size={14} />
@@ -160,7 +160,7 @@ export default function BookDetailClient({ book }: Props) {
               </div>
 
               {/* Download info */}
-              <div className="mt-10 bg-gradient-to-r from-unicef-light to-blue-50 rounded-2xl p-6 border border-unicef/10">
+              <div className="mt-10 bg-gradient-to-r from-unicef-light to-blue-50 rounded-lg p-6 border border-unicef/10">
                 <h3 className="font-heading text-lg font-bold text-unicef-dark mb-2">
                   Descarga disponible
                 </h3>
@@ -171,10 +171,10 @@ export default function BookDetailClient({ book }: Props) {
                   a mejorar nuestros recursos educativos.
                 </p>
                 <div className="flex gap-3 mt-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-full border border-gray-200">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
                     <Smartphone size={14} /> Android
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-full border border-gray-200">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
                     <Monitor size={14} /> Windows
                   </span>
                 </div>

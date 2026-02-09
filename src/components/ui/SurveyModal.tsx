@@ -58,16 +58,16 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
   };
 
   const roleOptions = [
-    { value: 'estudiante' as const, label: 'Estudiante', icon: GraduationCap, iconColor: 'text-blue-600' },
-    { value: 'docente' as const, label: 'Docente', icon: School, iconColor: 'text-green-600' },
-    { value: 'otro' as const, label: 'Otro', icon: CircleUser, iconColor: 'text-purple-600' },
+    { value: 'estudiante' as const, label: 'Estudiante', icon: GraduationCap, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'docente' as const, label: 'Docente', icon: School, iconColor: 'text-emerald-700', selectedBg: 'border-emerald-400 bg-emerald-100', selectedIcon: 'text-emerald-800' },
+    { value: 'otro' as const, label: 'Otro', icon: CircleUser, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
   ];
 
   const genderOptions = [
-    { value: 'femenino' as const, label: 'Femenino', icon: UserRound, iconColor: 'text-pink-500' },
-    { value: 'masculino' as const, label: 'Masculino', icon: User, iconColor: 'text-blue-500' },
-    { value: 'otro' as const, label: 'Otro', icon: Rainbow, iconColor: 'text-purple-500' },
-    { value: 'prefiero_no_decir' as const, label: 'Prefiero no decir', icon: ShieldQuestion, iconColor: 'text-gray-500' },
+    { value: 'femenino' as const, label: 'Femenino', icon: UserRound, iconColor: 'text-rose-600', selectedBg: 'border-rose-400 bg-rose-100', selectedIcon: 'text-rose-700' },
+    { value: 'masculino' as const, label: 'Masculino', icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'otro' as const, label: 'Otro', icon: Rainbow, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
+    { value: 'prefiero_no_decir' as const, label: 'Prefiero no decir', icon: ShieldQuestion, iconColor: 'text-slate-600', selectedBg: 'border-slate-400 bg-slate-100', selectedIcon: 'text-slate-700' },
   ];
 
   return (
@@ -106,12 +106,12 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
                   onChange={() => setRole(option.value)}
                   className="peer sr-only"
                 />
-                <div className={`flex flex-col items-center gap-1 p-3 rounded-2xl border-2 transition-all duration-200 hover:scale-105 ${
+                <div className={`flex flex-col items-center gap-1 p-3 rounded-lg border-2 transition-all duration-200 hover:scale-105 ${
                   role === option.value
-                    ? 'border-unicef bg-unicef-light shadow-md scale-105'
-                    : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                    ? `${option.selectedBg} shadow-md scale-105`
+                    : 'border-gray-200 bg-white hover:border-gray-400'
                 }`}>
-                  <option.icon size={24} className={option.iconColor} />
+                  <option.icon size={24} className={role === option.value ? option.selectedIcon : option.iconColor} />
                   <span className="text-xs font-bold">{option.label}</span>
                 </div>
               </label>
@@ -136,12 +136,12 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
                   onChange={() => setGender(option.value)}
                   className="peer sr-only"
                 />
-                <div className={`flex items-center gap-2 p-3 rounded-2xl border-2 transition-all duration-200 hover:scale-105 ${
+                <div className={`flex items-center gap-2 p-3 rounded-lg border-2 transition-all duration-200 hover:scale-105 ${
                   gender === option.value
-                    ? 'border-unicef bg-unicef-light shadow-md scale-105'
-                    : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                    ? `${option.selectedBg} shadow-md scale-105`
+                    : 'border-gray-200 bg-white hover:border-gray-400'
                 }`}>
-                  <option.icon size={18} className={option.iconColor} />
+                  <option.icon size={18} className={gender === option.value ? option.selectedIcon : option.iconColor} />
                   <span className="text-xs font-bold">{option.label}</span>
                 </div>
               </label>
@@ -153,7 +153,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         <button
           onClick={handleSubmit}
           disabled={!role || !gender || isSubmitting}
-          className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-white text-base transition-all duration-300 ${
+          className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-lg font-bold text-white text-base transition-all duration-300 ${
             role && gender && !isSubmitting
               ? 'bg-unicef hover:bg-unicef-dark shadow-lg hover:shadow-xl hover:scale-[1.02] cursor-pointer'
               : 'bg-gray-300 cursor-not-allowed'
