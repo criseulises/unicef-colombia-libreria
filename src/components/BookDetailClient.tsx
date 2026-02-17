@@ -70,7 +70,7 @@ export default function BookDetailClient({ book }: Props) {
             {/* Cover */}
             <div className="lg:col-span-2">
               <div className="sticky top-28">
-                <div className="relative aspect-[3/4] rounded-xl overflow-hidden book-shadow max-w-sm mx-auto lg:max-w-none">
+                <div className="relative aspect-video rounded-xl overflow-hidden book-shadow max-w-sm mx-auto lg:max-w-none">
                   <Image
                     src={book.coverImage}
                     alt={book.title}

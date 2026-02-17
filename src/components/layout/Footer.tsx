@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Heart, BookOpen } from 'lucide-react';
 import { ROUTES, SITE_CONFIG } from '@/lib/constants';
 
@@ -10,12 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <Image
-              src="/images/logo_unicef.webp"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png"
               alt="UNICEF Colombia"
-              width={180}
-              height={36}
-              className="h-9 w-auto"
             />
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               {SITE_CONFIG.description}

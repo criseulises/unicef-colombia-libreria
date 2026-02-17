@@ -30,7 +30,7 @@ export default function BookCard({ book, index = 0 }: BookCardProps) {
         <div className={`h-2 bg-gradient-to-r ${accent}`} />
 
         {/* Cover */}
-        <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
+        <div className="relative aspect-video overflow-hidden bg-gray-100">
           <Image
             src={book.coverImage}
             alt={book.title}
