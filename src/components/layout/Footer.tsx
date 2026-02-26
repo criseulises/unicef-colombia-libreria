@@ -1,6 +1,45 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Heart, BookOpen } from 'lucide-react';
 import { ROUTES, SITE_CONFIG } from '@/lib/constants';
+
+const INSTITUTIONAL_LOGOS = [
+  {
+    src: '/images/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png',
+    alt: 'UNICEF - Para cada infancia',
+    width: 180,
+    height: 80,
+    className: 'h-14 md:h-[4.5rem]',
+  },
+  {
+    src: '/images/logos/logo-icbf.png',
+    alt: 'ICBF - Instituto Colombiano de Bienestar Familiar',
+    width: 140,
+    height: 160,
+    className: 'h-16 md:h-20',
+  },
+  {
+    src: '/images/logos/logo-insor.png',
+    alt: 'INSOR - Instituto Nacional para Sordos',
+    width: 200,
+    height: 200,
+    className: 'h-12 md:h-14',
+  },
+  {
+    src: '/images/logos/logo-inci.png',
+    alt: 'INCI - Instituto Nacional para Ciegos',
+    width: 320,
+    height: 90,
+    className: 'h-8 md:h-10',
+  },
+  {
+    src: '/images/logos/logo-fsc.png',
+    alt: 'Fundación Saldarriaga Concha',
+    width: 280,
+    height: 140,
+    className: 'h-12 md:h-14',
+  },
+];
 
 export default function Footer() {
   return (
@@ -9,11 +48,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png"
-              alt="UNICEF Colombia"
-            />
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               {SITE_CONFIG.description}
             </p>
@@ -50,6 +84,26 @@ export default function Footer() {
               <BookOpen size={16} />
               <span className="text-sm font-semibold">3 libros disponibles</span>
             </div>
+          </div>
+        </div>
+
+        {/* Institutional Logos */}
+        <div className="mt-10 pt-8 border-t border-unicef/10">
+          <p className="text-center text-sm font-semibold text-unicef-dark mb-6">
+            Con el apoyo de
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            {INSTITUTIONAL_LOGOS.map((logo) => (
+              <div key={logo.src} className="relative shrink-0">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  className={`${logo.className} w-auto object-contain`}
+                />
+              </div>
+            ))}
           </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, BookOpen, Library, Home } from 'lucide-react';
 import { ROUTES } from '@/lib/constants';
 
@@ -19,11 +20,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png"
               alt="UNICEF - Para cada infancia"
-              className="h-24 md:h-24"
+              width={240}
+              height={100}
+              priority
+              className="h-20 md:h-24 w-auto"
             />
           </Link>
 
