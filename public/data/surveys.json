@@ -129,5 +129,14 @@
     "gender": "otro",
     "action": "descargar",
     "timestamp": "2026-02-26T03:33:48.835Z"
+  },
+  {
+    "bookId": "2",
+    "bookTitle": "Una chalupa para Juan",
+    "role": "nina",
+    "ageRange": "6-10",
+    "gender": "masculino",
+    "action": "leer",
+    "timestamp": "2026-02-26T03:45:55.251Z"
   }
 ]

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { BookOpen, Sparkles, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/lib/constants';
 
 export default function Hero() {
@@ -18,11 +18,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <div className="animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 bg-unicef/10 text-unicef px-4 py-2 rounded-lg text-sm font-bold mb-6">
-              <Sparkles size={16} />
-              UNICEF Colombia
-            </div>
-
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-800 leading-tight">
               Historias que{' '}
               <span className="text-unicef relative">
