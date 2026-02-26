@@ -1,4 +1,6 @@
-import { Heart, Globe, BookOpen, Users, Accessibility, Smartphone } from 'lucide-react';
+import Link from 'next/link';
+import { Heart, Globe, BookOpen, Users, Accessibility, Smartphone, ExternalLink } from 'lucide-react';
+import { ROUTES } from '@/lib/constants';
 
 export default function About() {
   const features = [
@@ -57,6 +59,15 @@ export default function About() {
             UNICEF Colombia promueve el acceso a la lectura como derecho fundamental
             de todos los niños y niñas. Estos libros digitales son parte de ese compromiso.
           </p>
+          <Link
+            href={ROUTES.ABOUT_PROJECT}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-unicef text-white rounded-lg font-bold hover:bg-unicef-dark transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
+          >
+            Conoce más sobre el proyecto
+            <ExternalLink size={16} />
+          </Link>
         </div>
 
         {/* Features Grid */}

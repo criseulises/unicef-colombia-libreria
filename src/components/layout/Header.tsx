@@ -1,18 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, BookOpen, Library, Home } from 'lucide-react';
+import { Menu, X, Library, Home, ExternalLink } from 'lucide-react';
 import { ROUTES } from '@/lib/constants';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
-    { label: 'Inicio', href: ROUTES.HOME, icon: Home },
-    { label: 'Biblioteca', href: ROUTES.LIBRARY, icon: Library },
+    { label: 'Inicio', href: ROUTES.HOME, icon: Home, external: false },
+    { label: 'Biblioteca', href: ROUTES.LIBRARY, icon: Library, external: false },
   ];
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-unicef-light shadow-sm">
@@ -36,18 +43,25 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all duration-200"
+                {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
+                  !item.external && isActive(item.href)
+                    ? 'text-unicef bg-unicef-light'
+                    : 'text-gray-600 hover:text-unicef hover:bg-unicef-light'
+                }`}
               >
                 <item.icon size={18} />
                 {item.label}
               </Link>
             ))}
             <Link
-              href={ROUTES.LIBRARY}
+              href={ROUTES.ABOUT_PROJECT}
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-2 flex items-center gap-2 px-5 py-2.5 bg-unicef text-white rounded-lg font-bold hover:bg-unicef-dark transition-all duration-200 hover:scale-105 shadow-md hover:shadow-lg"
             >
-              <BookOpen size={18} />
-              Explorar Libros
+              <ExternalLink size={16} />
+              Sobre el proyecto
             </Link>
           </nav>
 
@@ -70,19 +84,26 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:text-unicef hover:bg-unicef-light font-semibold transition-all"
+                  {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition-all ${
+                    !item.external && isActive(item.href)
+                      ? 'text-unicef bg-unicef-light'
+                      : 'text-gray-600 hover:text-unicef hover:bg-unicef-light'
+                  }`}
                 >
                   <item.icon size={20} />
                   {item.label}
                 </Link>
               ))}
               <Link
-                href={ROUTES.LIBRARY}
+                href={ROUTES.ABOUT_PROJECT}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 mx-2 mt-2 px-5 py-3 bg-unicef text-white rounded-lg font-bold hover:bg-unicef-dark transition-all shadow-md"
               >
-                <BookOpen size={18} />
-                Explorar Libros
+                <ExternalLink size={16} />
+                Sobre el proyecto
               </Link>
             </div>
           </nav>

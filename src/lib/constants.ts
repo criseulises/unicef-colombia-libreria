@@ -2,6 +2,7 @@ export const ROUTES = {
   HOME: '/',
   LIBRARY: '/biblioteca',
   BOOK_DETAIL: (slug: string) => `/libros/${slug}`,
+  ABOUT_PROJECT: 'https://www.unicef.org/colombia/historias/libros-digitales-accesibles',
 } as const;
 
 export const COLORS = {
