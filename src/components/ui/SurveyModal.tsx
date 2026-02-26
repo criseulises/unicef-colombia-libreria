@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, Download, Sparkles, User, Users, GraduationCap, School, CircleUser, UserRound, Rainbow, ShieldQuestion } from 'lucide-react';
+import { BookOpen, Download, Sparkles, User, Users, School, CircleUser, UserRound, Rainbow, ShieldQuestion, Calendar } from 'lucide-react';
 import Modal from './Modal';
 import { Book, SurveyResponse } from '@/types';
 
@@ -14,11 +14,14 @@ interface SurveyModalProps {
 
 export default function SurveyModal({ isOpen, onClose, book, action }: SurveyModalProps) {
   const [role, setRole] = useState<SurveyResponse['role'] | ''>('');
+  const [ageRange, setAgeRange] = useState<SurveyResponse['ageRange'] | ''>('');
   const [gender, setGender] = useState<SurveyResponse['gender'] | ''>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const isFormValid = role && ageRange && gender;
+
   const handleSubmit = async () => {
-    if (!role || !gender) return;
+    if (!role || !ageRange || !gender) return;
 
     setIsSubmitting(true);
 
@@ -26,6 +29,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
       bookId: book.id,
       bookTitle: book.title,
       role,
+      ageRange,
       gender,
       action,
       timestamp: new Date().toISOString(),
@@ -53,14 +57,23 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
 
     setIsSubmitting(false);
     setRole('');
+    setAgeRange('');
     setGender('');
     onClose();
   };
 
   const roleOptions = [
-    { value: 'estudiante' as const, label: 'Estudiante', icon: GraduationCap, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'nina' as const, label: 'Niña', icon: UserRound, iconColor: 'text-pink-600', selectedBg: 'border-pink-400 bg-pink-100', selectedIcon: 'text-pink-700' },
+    { value: 'nino' as const, label: 'Niño', icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'familia' as const, label: 'Familia', icon: Users, iconColor: 'text-amber-600', selectedBg: 'border-amber-400 bg-amber-100', selectedIcon: 'text-amber-700' },
     { value: 'docente' as const, label: 'Docente', icon: School, iconColor: 'text-emerald-700', selectedBg: 'border-emerald-400 bg-emerald-100', selectedIcon: 'text-emerald-800' },
     { value: 'otro' as const, label: 'Otro', icon: CircleUser, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
+  ];
+
+  const ageRangeOptions = [
+    { value: '0-5' as const, label: '0–5 años', sublabel: 'Primera infancia', selectedBg: 'border-sky-400 bg-sky-100' },
+    { value: '6-10' as const, label: '6–10 años', sublabel: 'Infancia', selectedBg: 'border-teal-400 bg-teal-100' },
+    { value: '11+' as const, label: '11+ años', sublabel: 'Adolescencia / Adulto', selectedBg: 'border-indigo-400 bg-indigo-100' },
   ];
 
   const genderOptions = [
@@ -93,9 +106,9 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         <div>
           <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2.5">
             <User size={16} className="text-unicef" />
-            ¿Cuál es tu rol?
+            ¿Quién eres?
           </label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-5 gap-2">
             {roleOptions.map((option) => (
               <label key={option.value} className="cursor-pointer">
                 <input
@@ -113,6 +126,36 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
                 }`}>
                   <option.icon size={24} className={role === option.value ? option.selectedIcon : option.iconColor} />
                   <span className="text-xs font-bold">{option.label}</span>
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Age Range */}
+        <div>
+          <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2.5">
+            <Calendar size={16} className="text-unicef" />
+            Rango de edad
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {ageRangeOptions.map((option) => (
+              <label key={option.value} className="cursor-pointer">
+                <input
+                  type="radio"
+                  name="ageRange"
+                  value={option.value}
+                  checked={ageRange === option.value}
+                  onChange={() => setAgeRange(option.value)}
+                  className="peer sr-only"
+                />
+                <div className={`flex flex-col items-center gap-0.5 p-3 rounded-lg border-2 transition-all duration-200 hover:scale-105 ${
+                  ageRange === option.value
+                    ? `${option.selectedBg} shadow-md scale-105`
+                    : 'border-gray-200 bg-white hover:border-gray-400'
+                }`}>
+                  <span className="text-sm font-bold">{option.label}</span>
+                  <span className="text-[10px] text-gray-500">{option.sublabel}</span>
                 </div>
               </label>
             ))}
@@ -152,9 +195,9 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         {/* Submit */}
         <button
           onClick={handleSubmit}
-          disabled={!role || !gender || isSubmitting}
+          disabled={!isFormValid || isSubmitting}
           className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-lg font-bold text-white text-base transition-all duration-300 ${
-            role && gender && !isSubmitting
+            isFormValid && !isSubmitting
               ? 'bg-unicef hover:bg-unicef-dark shadow-lg hover:shadow-xl hover:scale-[1.02] cursor-pointer'
               : 'bg-gray-300 cursor-not-allowed'
           }`}
