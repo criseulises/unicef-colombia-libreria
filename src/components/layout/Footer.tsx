@@ -71,6 +71,11 @@ export default async function Footer() {
                   Biblioteca
                 </Link>
               </li>
+              <li>
+                <Link href="/admin" className="text-gray-500 hover:text-unicef transition-colors text-sm font-medium">
+                  Panel administrativo
+                </Link>
+              </li>
             </ul>
           </div>
 
