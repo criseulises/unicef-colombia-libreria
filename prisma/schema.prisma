@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Book {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  author          String
+  illustrator     String
+  description     String
+  longDescription String   @db.Text
+  coverImage      String
+  readingUrl      String
+  downloadUrl     String
+  pages           Int
+  year            String
+  language        String   @default("Español")
+  publisher       String   @default("UNICEF Colombia")
+  ageRange        String
+  available       Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  categories     BookCategory[]
+  surveyResponses SurveyResponse[]
+}
+
+model Category {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+
+  books BookCategory[]
+}
+
+model BookCategory {
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId     String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+
+  @@id([bookId, categoryId])
+}
+
+model SurveyResponse {
+  id        String   @id @default(cuid())
+  book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId    String
+  bookTitle String
+  role      String   // nina, nino, familia, docente, estudiante, otro
+  ageRange  String?  // 0-5, 6-10, 11+
+  gender    String   // masculino, femenino, otro, prefiero_no_decir
+  action    String   // leer, descargar
+  platform  String?  // android, windows
+  timestamp DateTime @default(now())
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin") // admin, editor, viewer, etc.
+  createdAt DateTime @default(now())
+}

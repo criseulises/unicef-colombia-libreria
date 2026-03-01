@@ -1,6 +1,6 @@
 import { fetchBookBySlug, fetchBooks } from '@/lib/api';
 import { notFound } from 'next/navigation';
-import BookDetailClient from '@/components/BookDetailClient';
+import BookDetailClient from '@/components/books/BookDetailClient';
 import type { Metadata } from 'next';
 
 interface Props {

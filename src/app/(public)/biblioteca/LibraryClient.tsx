@@ -9,7 +9,7 @@ interface Props {
   books: Book[];
 }
 
-export default function BibliotecaClient({ books }: Props) {
+export default function LibraryClient({ books }: Props) {
   const [search, setSearch] = useState('');
 
   const filteredBooks = books.filter(

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BookOpen, Download, Sparkles, User, Users, School, CircleUser, UserRound, Rainbow, ShieldQuestion, Calendar } from 'lucide-react';
 import Modal from './Modal';
 import { Book, SurveyResponse } from '@/types';
+import { STRINGS } from '@/lib/strings';
 
 interface SurveyModalProps {
   isOpen: boolean;
@@ -32,7 +33,6 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
       ageRange,
       gender,
       action,
-      timestamp: new Date().toISOString(),
     };
 
     try {
@@ -63,24 +63,24 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
   };
 
   const roleOptions = [
-    { value: 'nina' as const, label: 'Niña', icon: UserRound, iconColor: 'text-pink-600', selectedBg: 'border-pink-400 bg-pink-100', selectedIcon: 'text-pink-700' },
-    { value: 'nino' as const, label: 'Niño', icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
-    { value: 'familia' as const, label: 'Familia', icon: Users, iconColor: 'text-amber-600', selectedBg: 'border-amber-400 bg-amber-100', selectedIcon: 'text-amber-700' },
-    { value: 'docente' as const, label: 'Docente', icon: School, iconColor: 'text-emerald-700', selectedBg: 'border-emerald-400 bg-emerald-100', selectedIcon: 'text-emerald-800' },
-    { value: 'otro' as const, label: 'Otro', icon: CircleUser, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
+    { value: 'nina' as const, label: STRINGS.survey.roles.nina, icon: UserRound, iconColor: 'text-pink-600', selectedBg: 'border-pink-400 bg-pink-100', selectedIcon: 'text-pink-700' },
+    { value: 'nino' as const, label: STRINGS.survey.roles.nino, icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'familia' as const, label: STRINGS.survey.roles.familia, icon: Users, iconColor: 'text-amber-600', selectedBg: 'border-amber-400 bg-amber-100', selectedIcon: 'text-amber-700' },
+    { value: 'docente' as const, label: STRINGS.survey.roles.docente, icon: School, iconColor: 'text-emerald-700', selectedBg: 'border-emerald-400 bg-emerald-100', selectedIcon: 'text-emerald-800' },
+    { value: 'otro' as const, label: STRINGS.survey.roles.otro, icon: CircleUser, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
   ];
 
   const ageRangeOptions = [
-    { value: '0-5' as const, label: '0–5 años', sublabel: 'Primera infancia', selectedBg: 'border-sky-400 bg-sky-100' },
-    { value: '6-10' as const, label: '6–10 años', sublabel: 'Infancia', selectedBg: 'border-teal-400 bg-teal-100' },
-    { value: '11+' as const, label: '11+ años', sublabel: 'Adolescencia / Adulto', selectedBg: 'border-indigo-400 bg-indigo-100' },
+    { value: '0-5' as const, label: STRINGS.survey.ageRanges['0-5'].label, sublabel: STRINGS.survey.ageRanges['0-5'].sublabel, selectedBg: 'border-sky-400 bg-sky-100' },
+    { value: '6-10' as const, label: STRINGS.survey.ageRanges['6-10'].label, sublabel: STRINGS.survey.ageRanges['6-10'].sublabel, selectedBg: 'border-teal-400 bg-teal-100' },
+    { value: '11+' as const, label: STRINGS.survey.ageRanges['11+'].label, sublabel: STRINGS.survey.ageRanges['11+'].sublabel, selectedBg: 'border-indigo-400 bg-indigo-100' },
   ];
 
   const genderOptions = [
-    { value: 'femenino' as const, label: 'Femenino', icon: UserRound, iconColor: 'text-rose-600', selectedBg: 'border-rose-400 bg-rose-100', selectedIcon: 'text-rose-700' },
-    { value: 'masculino' as const, label: 'Masculino', icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
-    { value: 'otro' as const, label: 'Otro', icon: Rainbow, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
-    { value: 'prefiero_no_decir' as const, label: 'Prefiero no decir', icon: ShieldQuestion, iconColor: 'text-slate-600', selectedBg: 'border-slate-400 bg-slate-100', selectedIcon: 'text-slate-700' },
+    { value: 'femenino' as const, label: STRINGS.survey.genders.femenino, icon: UserRound, iconColor: 'text-rose-600', selectedBg: 'border-rose-400 bg-rose-100', selectedIcon: 'text-rose-700' },
+    { value: 'masculino' as const, label: STRINGS.survey.genders.masculino, icon: User, iconColor: 'text-blue-700', selectedBg: 'border-blue-400 bg-blue-100', selectedIcon: 'text-blue-800' },
+    { value: 'otro' as const, label: STRINGS.survey.genders.otro, icon: Rainbow, iconColor: 'text-violet-700', selectedBg: 'border-violet-400 bg-violet-100', selectedIcon: 'text-violet-800' },
+    { value: 'prefiero_no_decir' as const, label: STRINGS.survey.genders.prefiero_no_decir, icon: ShieldQuestion, iconColor: 'text-slate-600', selectedBg: 'border-slate-400 bg-slate-100', selectedIcon: 'text-slate-700' },
   ];
 
   return (
@@ -94,10 +94,10 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
           )}
         </div>
         <h2 className="font-heading text-2xl font-bold text-gray-800">
-          {action === 'leer' ? '¡Vamos a leer!' : '¡Descarga tu libro!'}
+          {action === 'leer' ? STRINGS.survey.readTitle : STRINGS.survey.downloadTitle}
         </h2>
         <p className="text-gray-500 text-sm mt-1">
-          Cuéntanos un poco sobre ti antes de continuar
+          {STRINGS.survey.subtitle}
         </p>
       </div>
 
@@ -106,7 +106,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         <div>
           <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2.5">
             <User size={16} className="text-unicef" />
-            ¿Quién eres?
+            {STRINGS.survey.whoAreYou}
           </label>
           <div className="grid grid-cols-5 gap-2">
             {roleOptions.map((option) => (
@@ -136,7 +136,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         <div>
           <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2.5">
             <Calendar size={16} className="text-unicef" />
-            Rango de edad
+            {STRINGS.survey.ageRangeLabel}
           </label>
           <div className="grid grid-cols-3 gap-2">
             {ageRangeOptions.map((option) => (
@@ -166,7 +166,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
         <div>
           <label className="flex items-center gap-2 text-sm font-bold text-gray-700 mb-2.5">
             <Users size={16} className="text-unicef" />
-            ¿Cuál es tu género?
+            {STRINGS.survey.genderLabel}
           </label>
           <div className="grid grid-cols-2 gap-2">
             {genderOptions.map((option) => (
@@ -207,7 +207,7 @@ export default function SurveyModal({ isOpen, onClose, book, action }: SurveyMod
           ) : (
             <>
               <Sparkles size={18} />
-              {action === 'leer' ? 'Leer ahora' : 'Descargar ahora'}
+              {action === 'leer' ? STRINGS.survey.readNow : STRINGS.survey.downloadNow}
             </>
           )}
         </button>

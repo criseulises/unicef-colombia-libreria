@@ -1,19 +1,11 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { Library, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Book } from '@/types';
 import { fetchAvailableBooks } from '@/lib/api';
 import { ROUTES } from '@/lib/constants';
 import BookCard from '@/components/ui/BookCard';
 
-export default function FeaturedBooks() {
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    fetchAvailableBooks().then(setBooks);
-  }, []);
+export default async function FeaturedBooks() {
+  const books = await fetchAvailableBooks();
 
   if (books.length === 0) return null;
 

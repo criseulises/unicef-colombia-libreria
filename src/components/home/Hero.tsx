@@ -1,11 +1,22 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/lib/constants';
+import { Book } from '@/types';
 
-export default function Hero() {
+const COVER_STYLES = [
+  { className: 'absolute left-0 top-4 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[-8deg] hover:rotate-[-4deg] transition-transform duration-500 cursor-pointer', sizes: '220px', z: '' },
+  { className: 'absolute right-0 top-0 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[6deg] hover:rotate-[3deg] transition-transform duration-500 cursor-pointer z-10', sizes: '220px', z: 'z-10' },
+  { className: 'absolute left-1/2 -translate-x-1/2 top-8 w-[200px] sm:w-[230px] h-[280px] sm:h-[310px] rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer z-20', sizes: '230px', z: 'z-20' },
+];
+
+interface HeroProps {
+  books: Book[];
+}
+
+export default function Hero({ books }: Readonly<HeroProps>) {
+  const coverBooks = books.slice(0, 3);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-unicef-light via-white to-blue-50">
       {/* Decorative elements */}
@@ -49,7 +60,7 @@ export default function Hero() {
             {/* Stats */}
             <div className="mt-10 flex gap-8">
               <div>
-                <div className="font-heading text-3xl font-extrabold text-unicef">3</div>
+                <div className="font-heading text-3xl font-extrabold text-unicef">{books.length}</div>
                 <div className="text-sm text-gray-400 font-medium">Libros disponibles</div>
               </div>
               <div className="w-px bg-gray-200" />
@@ -66,43 +77,27 @@ export default function Hero() {
           </div>
 
           {/* Book covers fan */}
-          <div className="relative flex justify-center items-center min-h-[400px] animate-scale-in">
-            <div className="relative w-[280px] h-[370px] sm:w-[320px] sm:h-[420px]">
-              {/* Book 3 (back) */}
-              <div className="absolute left-0 top-4 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[-8deg] hover:rotate-[-4deg] transition-transform duration-500 cursor-pointer">
-                <Image
-                  src="/images/covers/helena-y-una-carta-para-su-papa.webp"
-                  alt="Helena y una carta para su papá"
-                  fill
-                  className="object-cover"
-                  sizes="220px"
-                />
-              </div>
-
-              {/* Book 2 (middle) */}
-              <div className="absolute right-0 top-0 w-[200px] sm:w-[220px] h-[280px] sm:h-[300px] rounded-xl overflow-hidden shadow-xl rotate-[6deg] hover:rotate-[3deg] transition-transform duration-500 cursor-pointer z-10">
-                <Image
-                  src="/images/covers/una-chalupa-para-juan.webp"
-                  alt="Una chalupa para Juan"
-                  fill
-                  className="object-cover"
-                  sizes="220px"
-                />
-              </div>
-
-              {/* Book 1 (front) */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-8 w-[200px] sm:w-[230px] h-[280px] sm:h-[310px] rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer z-20">
-                <Image
-                  src="/images/covers/momo.webp"
-                  alt="Momo"
-                  fill
-                  className="object-cover"
-                  sizes="230px"
-                  priority
-                />
+          {coverBooks.length > 0 && (
+            <div className="relative flex justify-center items-center min-h-[400px] animate-scale-in">
+              <div className="relative w-[280px] h-[370px] sm:w-[320px] sm:h-[420px]">
+                {coverBooks.map((book, i) => {
+                  const style = COVER_STYLES[i];
+                  return (
+                    <div key={book.id} className={style.className}>
+                      <Image
+                        src={book.coverImage}
+                        alt={book.title}
+                        fill
+                        className="object-cover"
+                        sizes={style.sizes}
+                        priority={i === coverBooks.length - 1}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

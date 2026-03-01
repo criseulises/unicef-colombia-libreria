@@ -21,10 +21,9 @@ export interface Book {
 export interface SurveyResponse {
   bookId: string;
   bookTitle: string;
-  role: 'nina' | 'nino' | 'familia' | 'docente' | 'otro';
-  ageRange: '0-5' | '6-10' | '11+';
+  role: 'nina' | 'nino' | 'familia' | 'docente' | 'estudiante' | 'otro';
+  ageRange?: '0-5' | '6-10' | '11+';
   gender: 'masculino' | 'femenino' | 'otro' | 'prefiero_no_decir';
   action: 'leer' | 'descargar';
   platform?: 'android' | 'windows';
-  timestamp: string;
 }

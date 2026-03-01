@@ -28,7 +28,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src="/images/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png"
+              src="https://res.cloudinary.com/dsut2hscl/image/upload/v1772328011/unicef-libros/logos/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png"
               alt="UNICEF - Para cada infancia"
               width={240}
               height={100}

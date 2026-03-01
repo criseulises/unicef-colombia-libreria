@@ -1,5 +1,5 @@
 import { fetchAvailableBooks } from '@/lib/api';
-import BibliotecaClient from './BibliotecaClient';
+import LibraryClient from './LibraryClient';
 
 export const metadata = {
   title: 'Biblioteca | UNICEF Colombia',
@@ -8,5 +8,5 @@ export const metadata = {
 
 export default async function BibliotecaPage() {
   const books = await fetchAvailableBooks();
-  return <BibliotecaClient books={books} />;
+  return <LibraryClient books={books} />;
 }

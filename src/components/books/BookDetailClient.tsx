@@ -24,6 +24,22 @@ interface Props {
   book: Book;
 }
 
+const COLOR_ACCENTS = [
+  { gradient: 'from-blue-400 to-cyan-500', bg: 'bg-blue-50', text: 'text-blue-600' },
+  { gradient: 'from-emerald-400 to-teal-500', bg: 'bg-emerald-50', text: 'text-emerald-600' },
+  { gradient: 'from-orange-400 to-amber-500', bg: 'bg-orange-50', text: 'text-orange-600' },
+  { gradient: 'from-purple-400 to-violet-500', bg: 'bg-purple-50', text: 'text-purple-600' },
+  { gradient: 'from-rose-400 to-pink-500', bg: 'bg-rose-50', text: 'text-rose-600' },
+];
+
+function getAccentBySlug(slug: string) {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash + slug.charCodeAt(i)) | 0;
+  }
+  return COLOR_ACCENTS[Math.abs(hash) % COLOR_ACCENTS.length];
+}
+
 export default function BookDetailClient({ book }: Props) {
   const [surveyOpen, setSurveyOpen] = useState(false);
   const [surveyAction, setSurveyAction] = useState<'leer' | 'descargar'>('leer');
@@ -33,13 +49,7 @@ export default function BookDetailClient({ book }: Props) {
     setSurveyOpen(true);
   };
 
-  const colorAccents = {
-    momo: { gradient: 'from-blue-400 to-cyan-500', bg: 'bg-blue-50', text: 'text-blue-600' },
-    'una-chalupa-para-juan': { gradient: 'from-emerald-400 to-teal-500', bg: 'bg-emerald-50', text: 'text-emerald-600' },
-    'helena-y-una-carta-para-su-papa': { gradient: 'from-orange-400 to-amber-500', bg: 'bg-orange-50', text: 'text-orange-600' },
-  };
-
-  const accent = colorAccents[book.slug as keyof typeof colorAccents] || colorAccents.momo;
+  const accent = getAccentBySlug(book.slug);
 
   const details = [
     { icon: User, label: 'Autor', value: book.author },
