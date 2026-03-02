@@ -8,8 +8,12 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const books = await fetchBooks();
-  return books.map((book) => ({ slug: book.slug }));
+  try {
+    const books = await fetchBooks();
+    return books.map((book) => ({ slug: book.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
