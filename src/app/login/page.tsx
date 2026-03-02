@@ -18,17 +18,23 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
 
-    const result = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (result?.error) {
-      setError('Email o contraseña incorrectos');
+      if (result?.error) {
+        setError('Email o contraseña incorrectos');
+        setLoading(false);
+      } else {
+        router.refresh();
+        router.push('/admin');
+      }
+    } catch {
+      setError('Error de conexión. Intenta de nuevo.');
       setLoading(false);
-    } else {
-      router.push('/admin');
     }
   };
 
