@@ -6,13 +6,6 @@ import { prisma } from '@/lib/prisma';
 
 const INSTITUTIONAL_LOGOS = [
   {
-    src: 'https://res.cloudinary.com/dsut2hscl/image/upload/v1772328011/unicef-libros/logos/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png',
-    alt: 'UNICEF - Para cada infancia',
-    width: 180,
-    height: 80,
-    className: 'h-14 md:h-[4.5rem]',
-  },
-  {
     src: 'https://res.cloudinary.com/dsut2hscl/image/upload/v1772328013/unicef-libros/logos/logo-icbf.png',
     alt: 'ICBF - Instituto Colombiano de Bienestar Familiar',
     width: 140,
@@ -39,6 +32,20 @@ const INSTITUTIONAL_LOGOS = [
     width: 280,
     height: 140,
     className: 'h-12 md:h-14',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsut2hscl/image/upload/v1772730667/unicef-libros/logos/logo-men.png',
+    alt: 'MEN - Ministerio de Educación Nacional',
+    width: 200,
+    height: 120,
+    className: 'h-16 md:h-20',
+  },
+  {
+    src: 'https://res.cloudinary.com/dsut2hscl/image/upload/v1772328011/unicef-libros/logos/UNICEF_ForEveryChild_Cyan_Vertical_RGB_SP.png',
+    alt: 'UNICEF - Para cada infancia',
+    width: 180,
+    height: 80,
+    className: 'h-14 md:h-[4.5rem]',
   },
 ];
 

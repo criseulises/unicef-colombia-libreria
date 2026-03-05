@@ -50,6 +50,7 @@ export default function BookDetailClient({ book }: Props) {
   };
 
   const accent = getAccentBySlug(book.slug);
+  const hasDownload = !!book.downloadUrl;
 
   const details = [
     { icon: User, label: 'Autor', value: book.author },
@@ -100,18 +101,27 @@ export default function BookDetailClient({ book }: Props) {
                     <BookOpen size={20} />
                     Leer
                   </button>
-                  <button
-                    onClick={() => handleAction('descargar')}
-                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-accent-mint text-white rounded-lg font-bold text-base hover:bg-green-500 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
-                  >
-                    <Download size={20} />
-                    Descargar
-                  </button>
+                  {hasDownload ? (
+                    <button
+                      onClick={() => handleAction('descargar')}
+                      className="flex-1 flex items-center justify-center gap-2 py-4 bg-accent-mint text-white rounded-lg font-bold text-base hover:bg-green-500 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl cursor-pointer"
+                    >
+                      <Download size={20} />
+                      Descargar
+                    </button>
+                  ) : (
+                    <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-gray-100 text-gray-400 rounded-lg font-bold text-base cursor-not-allowed">
+                      <Download size={20} />
+                      No disponible
+                    </div>
+                  )}
                 </div>
 
-                <p className="text-center text-xs text-gray-400 mt-3">
-                  Disponible para Android y Windows
-                </p>
+                {hasDownload && (
+                  <p className="text-center text-xs text-gray-400 mt-3">
+                    Disponible para Android y Windows
+                  </p>
+                )}
               </div>
             </div>
 
@@ -170,25 +180,36 @@ export default function BookDetailClient({ book }: Props) {
               </div>
 
               {/* Download info */}
-              <div className="mt-10 bg-gradient-to-r from-unicef-light to-blue-50 rounded-lg p-6 border border-unicef/10">
-                <h3 className="font-heading text-lg font-bold text-unicef-dark mb-2">
-                  Descarga disponible
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Este libro está disponible para descarga gratuita tanto para
-                  <strong> Android</strong> como para <strong>Windows</strong>.
-                  Al descargar, te pediremos unos datos básicos que nos ayudan
-                  a mejorar nuestros recursos educativos.
-                </p>
-                <div className="flex gap-3 mt-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
-                    <Smartphone size={14} /> Android
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
-                    <Monitor size={14} /> Windows
-                  </span>
+              {hasDownload ? (
+                <div className="mt-10 bg-gradient-to-r from-unicef-light to-blue-50 rounded-lg p-6 border border-unicef/10">
+                  <h3 className="font-heading text-lg font-bold text-unicef-dark mb-2">
+                    Descarga disponible
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    Este libro está disponible para descarga gratuita tanto para
+                    <strong> Android</strong> como para <strong>Windows</strong>.
+                    Al descargar, te pediremos unos datos básicos que nos ayudan
+                    a mejorar nuestros recursos educativos.
+                  </p>
+                  <div className="flex gap-3 mt-4">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
+                      <Smartphone size={14} /> Android
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-white text-gray-600 px-3 py-1.5 rounded-md border border-gray-200">
+                      <Monitor size={14} /> Windows
+                    </span>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="mt-10 bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="font-heading text-lg font-bold text-gray-400 mb-2">
+                    Descarga no disponible
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    La descarga de este libro aún no está habilitada. Por ahora puedes disfrutarlo en línea.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
