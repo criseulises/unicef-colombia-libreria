@@ -133,7 +133,7 @@ export default async function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <p className="text-gray-400 text-xs flex items-center gap-1">
-              Hecho con <Heart size={12} className="text-accent-coral fill-accent-coral" /> para la infancia colombiana
+              Hecho con <Heart size={12} className="text-unicef fill-unicef" /> para la infancia colombiana
             </p>
             <Link href="/login" className="text-gray-300 hover:text-gray-400 transition-colors text-[10px]">
               ·
